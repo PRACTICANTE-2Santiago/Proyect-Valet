@@ -30,5 +30,4 @@ npm-debug.log*
 /platforms
 /plugins
 /www
-
-node_modules
+/node_modules

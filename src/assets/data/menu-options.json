@@ -1,0 +1,27 @@
+[
+  {
+    "icon": "car-sport-outline",
+    "name": "Recibir Auto",
+    "redirectTo": "/recibir"
+  },
+  {
+    "icon": "location-outline",
+    "name": "Por Estacionar",
+    "redirectTo": "/parking"
+  },
+  {
+    "icon": "hand-right-outline",
+    "name": "Solicitudes",
+    "redirectTo": "/solicitudes"
+  },
+  {
+    "icon": "person-circle-outline",
+    "name": "Entregados",
+    "redirectTo": "/entregados"
+  },
+  {
+    "icon": "list-circle-outline",
+    "name": "Reportes",
+    "redirectTo": "/reportes"
+  }
+]

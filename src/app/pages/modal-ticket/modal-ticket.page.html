@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ticket</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="cardMenu">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>@Name Local</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4" offset="4">
+          Contenido QR
+          <ion-thumbnail class="codeQR">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-thumbnail>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label>PLACAS0123</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="5" offset="1">
+          <ion-item>
+            <ion-label>Fecha:12-12-12</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Hora: 12:00</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-justify">Descripción Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur exercitationem provident voluptatum in obcaecati ipsum iure, eveniet placeat sequi est tempore, omnis temporibus natus architecto sunt hic impedit ad itaque.</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label>Folio: 00</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label>Visita www.linkom.mx</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button (click)="cancelar()" expand="block" color="danger" >
+            Cancelar Ticket
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button (click)="imprimir()" expand="block" color="primary">
+            Imprimir Ticket
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

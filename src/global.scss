@@ -24,3 +24,16 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.cardMenu {
+    box-shadow: 0px 0px 10px rgb(70, 70, 70);
+    min-height: 9em;
+    height: auto;
+    width: auto;
+    padding: 2px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin: 2em;
+    
+}

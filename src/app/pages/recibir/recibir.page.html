@@ -1,7 +1,7 @@
 <app-header titulo="Recibir Auto"></app-header>
 
-<ion-content>
-    <ion-card class="cardMenu">
+<ion-content class="ion-padding">
+    <ion-card >
         
         <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
             <ion-list-header  class="ion-align-items-center">
@@ -9,7 +9,7 @@
                     <br>
             </ion-list-header>
             
-            <ion-item>
+            <ion-item >
                 <ion-label position="floating">Placas<ion-text color="danger">*</ion-text></ion-label>
                 <ion-input required 
                             [(ngModel)]="auto.placas" 

@@ -26,7 +26,15 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .cardMenu {
-    box-shadow: 0px 0px 10px rgb(70, 70, 70);
+    //background-color: rgb(235, 245, 251);
+    //background-color: rgb(214, 234, 248);
+    //background-color: rgb(174, 214, 241);
+    //background-color: rgb(133, 193, 233);
+    //background-color: rgb(46, 134, 193);
+    //background-color: rgb(40, 116, 166);
+    //background-color: rgb(33, 97, 140);
+    //background-color: rgb(27, 79, 114);    
+    background-color: rgb(26, 82, 118);    
     min-height: 9em;
     height: auto;
     width: auto;
@@ -35,6 +43,7 @@
     align-content: center;
     text-align: center;
     margin: 2em;
+
     
 }
 
@@ -80,4 +89,20 @@
 .ion-text{
     text-align: center;
     font-size: x-large;
+}
+
+ion-card-title {
+    size: legal;
+    font-size: xx-large;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: white;
+    
+}
+ion-title{
+    font-size: x-large;
+    color: #1a5276;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
 }

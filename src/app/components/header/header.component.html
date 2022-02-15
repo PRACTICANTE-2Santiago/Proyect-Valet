@@ -1,13 +1,15 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
-                <ion-back-button defaultHref="/" text="Inicio" color="primary"></ion-back-button>
+            <ion-menu-button menu="menuPrincipal"></ion-menu-button>
         </ion-buttons>
         <ion-title class="ion-text-capitalize">
             {{titulo}}
         </ion-title>
         <ion-buttons slot="end">
-            <ion-menu-button menu="menuPrincipal"></ion-menu-button>
+            <ion-button class="regreso" [routerLink]="['/home']">
+                <ion-icon name="home" color="#083e54"></ion-icon>
+              </ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>

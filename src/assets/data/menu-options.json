@@ -1,27 +1,27 @@
 [
   {
-    "icon": "car-sport-outline",
+    "icon": "car-sport",
     "name": "Recibir Auto",
     "redirectTo": "/recibir"
   },
   {
-    "icon": "location-outline",
+    "icon": "location",
     "name": "Por Estacionar",
     "redirectTo": "/parking"
   },
   {
-    "icon": "hand-right-outline",
+    "icon": "hand-right",
     "name": "Solicitudes",
     "redirectTo": "/solicitudes"
   },
   {
-    "icon": "person-circle-outline",
+    "icon": "person-circle",
     "name": "Entregados",
     "redirectTo": "/entregados"
   },
   {
-    "icon": "list-circle-outline",
-    "name": "Reportes",
+    "icon": "list-circle",
+    "name": "Listados",
     "redirectTo": "/reportes"
   }
 ]

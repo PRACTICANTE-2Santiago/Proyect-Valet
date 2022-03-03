@@ -12,19 +12,23 @@
             <ion-item >
                 <ion-label position="floating">Placas<ion-text color="danger">*</ion-text></ion-label>
                 <ion-input required 
-                            [(ngModel)]="auto.placas" 
+                            ngModel 
                             type="text"
                             name="placas">
                 </ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="floating">Descripción <ion-text color="danger">*</ion-text></ion-label>
-                <ion-input type="text" placeholder="Añadir una Descripción" [(ngModel)]="auto.descripcion" name="descripcion"></ion-input>
+                <ion-input type="text" 
+                        placeholder="Añadir una Descripción" 
+                        ngModel 
+                        name="descripcion">
+                </ion-input>
             </ion-item>
             <ion-item>
                 <ion-input type="file" placeholder="Tomar foto"></ion-input>
             </ion-item>
-            <ion-button (click)="nextpage()" class="btn" color="primary" [disabled]="formulario.invalid">
+            <ion-button (click)="nextpage()" class="btn" color="primary" [disabled]="formulario.invalid" type="submit">
                 Generar Ticket
             </ion-button>
         </form>

@@ -21,7 +21,7 @@
   },
   {
     "icon": "list-circle",
-    "name": "Listados",
+    "name": "Historial",
     "redirectTo": "/reportes"
   }
 ]

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-modal-ticket',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-ticket.page.scss'],
 })
 export class ModalTicketPage implements OnInit {
+  
+  @Input() auto=[];
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.auto);
+    
   }
 
 }

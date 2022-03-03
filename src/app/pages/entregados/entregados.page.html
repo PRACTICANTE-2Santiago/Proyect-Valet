@@ -4,11 +4,11 @@
 
     <ion-card>
         <ion-list >
-            <ion-item-sliding *ngFor="let item of listadoAutos">
+            <ion-item-sliding *ngFor="let auto of entregado">
               <ion-item >
                 <ion-label>
-                  <h3>{{item.placas}}</h3>
-                  <p>{{item.id}}</p>
+                  <h3>Placas: {{auto.placas.toUpperCase()}}</h3>
+                  <p>Salida:  {{auto.fecha_entregado | date: 'short'}}</p>
                 </ion-label>
               </ion-item>
               <ion-item-options side="end">

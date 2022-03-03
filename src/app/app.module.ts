@@ -7,15 +7,22 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { Storage } from '@ionic/storage-angular';
+import { FormsModule } from '@angular/forms';
+import { ModalTicketPage } from './pages/modal-ticket/modal-ticket.page';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, ModalTicketPage],
+  entryComponents: [ModalTicketPage],
   imports: [BrowserModule, 
-            IonicModule.forRoot(), 
+            IonicModule.forRoot(),
+            IonicStorageModule.forRoot(),
             AppRoutingModule,
-            HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+            HttpClientModule,
+            FormsModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+              Storage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

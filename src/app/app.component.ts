@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Menu } from './interfaces/interfaces';
-import { DataService } from './services/data.service';
+import { DataService } from './pages/services/data.service';
 
 @Component({
   selector: 'app-root',

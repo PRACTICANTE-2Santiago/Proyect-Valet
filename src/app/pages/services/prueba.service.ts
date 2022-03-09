@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment'
 
 export interface Valet {
  id: string;
- id_creditos: string;
+ id_contador: string;
  id_pin: string;
  nombre: string;
  telefono: string;

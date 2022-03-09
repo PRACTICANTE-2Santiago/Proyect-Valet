@@ -13,7 +13,7 @@ import { PruebaService, Valet } from '../services/prueba.service';
 })
 export class HomePage implements OnInit {
 
-  valet: Valet;
+  valet: Valet[];
 
   
   menu: Observable<Menu[]>;

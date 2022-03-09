@@ -9,6 +9,14 @@
                     <br>
             </ion-list-header>
             
+
+            <ion-item>
+                <ion-label>Establecimiento</ion-label>
+                <ion-select ngModel name="id_comercio" placeholder="{{comercio.nombre}}">
+                    <ion-select-option value="{{comercio.id}}" *ngFor="let comercio of comecios" >{{comercio.nombre}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+
             <ion-item >
                 <ion-label position="floating">Placas<ion-text color="danger">*</ion-text></ion-label>
                 <ion-input required 

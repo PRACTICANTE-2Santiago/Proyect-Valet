@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Menu } from 'src/app/interfaces/interfaces';
+import { Modulos } from '../services/modulos.service';
 import { MenuController } from '@ionic/angular';
 import { DataService } from 'src/app/pages/services/data.service';
-import { PruebaService, Valet } from '../services/prueba.service';
+import { Storage } from '@ionic/storage-angular';
+import { AuthService } from '../services/auth.service';
+import { UsuarioChoferService } from '../services/usuario-chofer.service';
 
 
 @Component({
@@ -13,27 +15,37 @@ import { PruebaService, Valet } from '../services/prueba.service';
 })
 export class HomePage implements OnInit {
 
-  valet: Valet[];
-
+  modulos: Modulos = {};
   
-  menu: Observable<Menu[]>;
-
+  disconnectSubscription: any;
+  connectSubscription: any;
   constructor(private menuCtrl: MenuController,
               private dataService: DataService,
-              private service: PruebaService) {}
+              private service: UsuarioChoferService,
+              private storage: Storage,
+              private authService: AuthService,
+               ) {}
 
   ngOnInit() {
-      this.menu = this.dataService.getMenuOptions();
-
-      this.service.getAll().subscribe(response=>{
-        console.log(response);
-        
-      })
+     
   }
-
+  
   mostrarMenu(){
-    this.menuCtrl.open();
+    
+    this.menuCtrl.open('menuInicio')
   }
 
+  cerrarSesion(){
+    this.storage.get('datos').then(async (val)=>{
+      await this.service.updateToken(val[4], undefined).subscribe(response => {
+        console.log(response);
+      });
+    });
+    this.authService.logout();
+    this.storage.remove('datos');
+    this.storage.clear();
+    this.disconnectSubscription.unsubscribe();
+    this.connectSubscription.unsubscribe();
+  }
   
 }

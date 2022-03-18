@@ -54,12 +54,18 @@
     height: auto;
     width: auto;
     padding: 2px;
+    padding-top: 2em;
+    padding-bottom: 2em;
     justify-content: center;
     align-content: center;
     text-align: center;
     margin: 2em;
     margin-top: 12em;
     
+}
+
+.card{
+    padding: 1em;
 }
 
 .iconeye{
@@ -84,12 +90,33 @@
 .btn{
     display: block;
     margin: 0;
+    --background: #1a5276;
 }
 
 .ion-text{
     text-align: center;
     font-size: x-large;
 }
+
+
+.primer_titulo1{
+    font-size: 85%;
+    color: #000000;
+    font-family: bold;
+    text-align: center;
+  }
+  
+  .primer_titulo{
+    text-align: center;
+  }
+
+  .titulo_re{
+    font-size: 230%;
+    color: #ffffff;
+    font-family: bold;
+    text-align: center;
+  }
+  
 
 ion-card-title {
     size: legal;
@@ -105,4 +132,24 @@ ion-title{
     font-weight: bold;
     font-family: sans-serif;
     text-transform: uppercase;
+}
+
+ion-menu-button{
+    --ion-visibility: inherit !important;
+}
+
+.regreso{
+    --color: #1a5276;
+}
+.itemMenu{
+    --ion-background-color: #1a5276;
+    color: #ffffff;
+}
+.aviso{
+    font-size: 14px;
+    color: #777777;
+    text-align: center;
+}
+.ticket{
+    padding: 0%;
 }

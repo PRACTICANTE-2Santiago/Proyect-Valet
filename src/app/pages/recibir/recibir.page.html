@@ -1,22 +1,26 @@
 <app-header titulo="Recibir Auto"></app-header>
 
 <ion-content class="ion-padding">
-    <ion-card >
+    <ion-router-outlet class="relleno" id="mani"></ion-router-outlet>
+    <ion-card class="card">
         
         <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
             <ion-list-header  class="ion-align-items-center">
-                    <ion-label class="ion-text">Registrar Auto</ion-label>
+                    <ion-label class="ion-text">Recibir Auto</ion-label>
                     <br>
             </ion-list-header>
-            
+            <br>
+            <br>
+            <br>
 
             <ion-item>
-                <ion-label>Establecimiento</ion-label>
-                <ion-select ngModel name="id_comercio" placeholder="{{comercio.nombre}}">
-                    <ion-select-option value="{{comercio.id}}" *ngFor="let comercio of comecios" >{{comercio.nombre}}</ion-select-option>
+                <ion-label>Establecimiento: </ion-label>
+                <ion-select ngModel name="id_comercio" placeholder="kentoki" >
+                    <ion-select-option *ngFor="let comers of comercio" value="{{comers.id}}"  >{{comers.nombre}}</ion-select-option>
                 </ion-select>
             </ion-item>
-
+            <br>
+            <br>
             <ion-item >
                 <ion-label position="floating">Placas<ion-text color="danger">*</ion-text></ion-label>
                 <ion-input required 
@@ -25,6 +29,8 @@
                             name="placas">
                 </ion-input>
             </ion-item>
+            <br>
+            <br>
             <ion-item>
                 <ion-label position="floating">Descripción <ion-text color="danger">*</ion-text></ion-label>
                 <ion-input type="text" 
@@ -33,10 +39,23 @@
                         name="descripcion">
                 </ion-input>
             </ion-item>
-            <ion-item>
-                <ion-input type="file" placeholder="Tomar foto"></ion-input>
-            </ion-item>
-            <ion-button (click)="nextpage()" class="btn" color="primary" [disabled]="formulario.invalid" type="submit">
+            <br>
+            <br>
+            <ion-button (click)="addPhotoGallery()" class="btn" >
+                <ion-icon slot="icon-only" name="camera"></ion-icon> Tomar Foto
+            </ion-button>
+                <br>
+                <br>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="6" *ngFor="let photocar of photoService.photos; index as position">
+                            <ion-img [src]="photocar.webviewPath"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <br>
+                <br>
+                <ion-button (click)="nextpage()" class="btn" color="primary" [disabled]="formulario.invalid" type="submit">
                 Generar Ticket
             </ion-button>
         </form>

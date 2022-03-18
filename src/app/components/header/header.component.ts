@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { Modulos } from 'src/app/pages/services/modulos.service';
 
 @Component({
     selector: 'app-header',
@@ -6,8 +8,14 @@ import {Component, Input} from '@angular/core';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent{
+
+    modulos: Modulos = {};
+    
     @Input() titulo: string = '';
     
-    constructor(){}
-    
+    constructor(private menuCtrl: MenuController){}
+    mostrarMenu(){
+        this.menuCtrl.enable(true, 'menuPrincipal');
+        this.menuCtrl.open('menuPrincipal')
+      }
 }

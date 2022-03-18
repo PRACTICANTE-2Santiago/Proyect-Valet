@@ -2,40 +2,41 @@
 <ion-content class="ion-padding">
 
   <ion-card class="cardMenuLogin">
-    
-    <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+    <div class="titulo_re">
+      <label>¡Bienvenido!</label>
+    </div>
+    <form [formGroup]="myForm" (submit)="onSubmit()">
         <ion-list-header>
-            <ion-label>Iniciar Sesión</ion-label>
-            
+         
         </ion-list-header>
         <ion-item>
             <ion-label position="floating">NIP <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input required 
-            [(ngModel)]="usuario.pin" 
-            type="number"
-            name="pin">
-        </ion-input>
+            <ion-input required [(ngModel)]="myForm['nip']" formControlName="nip" type="text" placeholder="NIP"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label position="floating">Usuario <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input required 
-            [(ngModel)]="usuario.user" 
-            type="text"
-            name="user">
-        </ion-input>
+            <ion-input required [(ngModel)]="myForm['user']" formControlName="usuario" type="text" placeholder="Usuario"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label position="floating">Contraseña <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input required 
-            [(ngModel)]="usuario.password" 
-            [type]="getType()"
-            name="password">
-          </ion-input>
-          <ion-icon class="iconeye" (click)="togglePassword()" slot="end" [name]="iconpassword"></ion-icon>
+            <ion-input required [(ngModel)]="myForm['password']" formControlName="contrasenia" [type]="getType()" name="password" placeholder="contraseña"></ion-input>
+            <ion-icon class="iconeye" (click)="togglePassword()" slot="end" [name]="iconpassword"></ion-icon>
         </ion-item>
-        <ion-button class="loginButton" expand="block" color="primary" type="submit" [disabled]="formulario.invalid">
-            Login
+        <ion-button class="loginButton" expand="block" color="primary" type="submit">
+            INICIAR SESIÓN 
         </ion-button>
     </form>
+    <br>
+    <a href=""> Recuperar Constraseña</a>
   </ion-card>
+
+  <div class="primer_titulo">
+    <label class="primer_titulo1" >powered by linkom ® v.17.11.24</label>
+  </div>
+  <div class="primer_titulo">
+    <label class="primer_titulo1" >© 2021 Todos los derechos reservados</label>
+  </div>
+  <div class="primer_titulo">
+    <label class="primer_titulo1" >link-Valet ® es una marca registrada de Linkom</label>
+  </div>
 </ion-content>

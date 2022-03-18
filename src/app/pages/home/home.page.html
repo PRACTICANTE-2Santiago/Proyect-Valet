@@ -1,27 +1,121 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button menu="menuPrincipal"></ion-menu-button>
-  </ion-buttons >
-    <ion-title  ngModel="valet.nombre">{{valet.nombre}}</ion-title>
-  </ion-toolbar>
+<ion-menu side="start" menuId="menuInicio" contentId="main" class="my-custom-menu">
+  <ion-header mode="md">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-avatar style="padding: 5px;">
+          <img src="/assets/spider.jpeg" alt="">
+        </ion-avatar>
+      </ion-buttons>
+      <ion-title>Name User</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content *ngIf="modulos">
+    <div scrolly="true" style="max-height: auto;">
 
-</ion-header>
+      <ion-list class="itemMenu" style="padding: 0px;">
+        <ion-item class="itemMenu" [routerLink]="['/recibir']">
+          <ion-icon class="itemMenu" slot="start" name="car-sport"></ion-icon>
+          <ion-label>Recibit Auto</ion-label>
+        </ion-item>
+        
+        <ion-item class="itemMenu" [routerLink]="['/parking']">
+          <ion-icon class="itemMenu" slot="start" name="location"></ion-icon>
+          <ion-label>Por Estacionar</ion-label>
+        </ion-item>
+        
+        <ion-item class="itemMenu" [routerLink]="['/solicitudes']">
+          <ion-icon class="itemMenu" slot="start" name="hand-right"></ion-icon>
+          <ion-label>Solicitudes</ion-label>
+        </ion-item>
+        
+        <ion-item class="itemMenu" [routerLink]="['/reportes']">
+          <ion-icon class="itemMenu" slot="start" name="person-circle"></ion-icon>
+          <ion-label>Entregados</ion-label>
+        </ion-item>
+        
+        <ion-item class="itemMenu" [routerLink]="['/reportes']">
+          <ion-icon class="itemMenu" slot="start" name="list-circle"></ion-icon>
+          <ion-label>Historial</ion-label>
+        </ion-item>
+        
+        <ion-item class="itemMenu" (click)="cerrarSesion()" >
+          <ion-icon class="itemMenu" slot="start" name="log-out"></ion-icon>
+          <ion-label>Cerrar Sesión</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <div class="ion-padding">
+          <label>powered by linkom ® v.17.11.18</label>
+        </div>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
 
-
+  <ion-header [translucent]="true" mode="md">
+    <ion-toolbar>
+      <ion-buttons slot="start" >
+        <ion-menu-button menu="menuInicio"></ion-menu-button>
+      </ion-buttons>
+      <ion-title >Nombre Valet</ion-title>
+    </ion-toolbar>
+    
+  </ion-header>
+  
+  <!-- Contenido Pagina Principal-->
 <ion-content>
+  <ion-router-outlet id="main"></ion-router-outlet>
   <ion-row>
     <ion-col size="12" size-md="12">
-      <ion-card *ngFor="let n of menu | async" 
-                [routerLink]="n.redirectTo"
-                detail
-                class="cardMenu">
+      <ion-card class="cardMenu" [routerLink]="['/recibir']">
           <ion-col size="12">
             <div>
-              <ion-icon slot="start" [name]="n.icon" color="light" class="ionIcon"></ion-icon>
+              <ion-icon slot="start" name="car-sport" color="light" class="ionIcon"></ion-icon>
             </div>
             <div>
-              <ion-card-title ><strong>{{n.name}}</strong></ion-card-title>
+              <ion-card-title ><strong>Recibir</strong></ion-card-title>
+            </div>
+          </ion-col>
+      </ion-card>
+      <ion-card class="cardMenu" [routerLink]="['/parking']">
+          <ion-col size="12">
+            <div>
+              <ion-icon slot="start" name="location" color="light" class="ionIcon"></ion-icon>
+            </div>
+            <div>
+              <ion-card-title ><strong>Por Estacionar</strong></ion-card-title>
+            </div>
+          </ion-col>
+      </ion-card>
+      <ion-card class="cardMenu" [routerLink]="['/solicitudes']">
+          <ion-col size="12">
+            <div>
+              <ion-icon slot="start" name="hand-right" color="light" class="ionIcon"></ion-icon>
+            </div>
+            <div>
+              <ion-card-title ><strong>Solicitudes</strong></ion-card-title>
+            </div>
+          </ion-col>
+      </ion-card>
+      <ion-card class="cardMenu" [routerLink]="['/entregados']">
+          <ion-col size="12">
+            <div>
+              <ion-icon slot="start" name="person-circle" color="light" class="ionIcon"></ion-icon>
+            </div>
+            <div>
+              <ion-card-title ><strong>Entregados</strong></ion-card-title>
+            </div>
+          </ion-col>
+      </ion-card>
+      <ion-card class="cardMenu" [routerLink]="['/reportes']" >
+          <ion-col size="12">
+            <div>
+              <ion-icon slot="start" name="list-circle" color="light" class="ionIcon"></ion-icon>
+            </div>
+            <div>
+              <ion-card-title ><strong>Historial</strong></ion-card-title>
             </div>
           </ion-col>
       </ion-card>

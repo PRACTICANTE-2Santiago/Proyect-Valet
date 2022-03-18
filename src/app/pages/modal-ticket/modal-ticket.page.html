@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Ticket</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+        Cancelar
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -9,9 +15,14 @@
   <ion-card>
     <ion-grid fixed>
       <ion-row>
-        <ion-col size="12">
+        <ion-col size="6">
           <ion-item>
             <ion-label>@Name Local</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label>@ValetGrey</ion-label>
           </ion-item>
         </ion-col>
         <ion-col size="4" offset="4">
@@ -22,12 +33,12 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="6">
+        <ion-col size="5" class="ticket">
           <ion-item>
             <ion-label>PLACAS0123</ion-label>
           </ion-item>
         </ion-col>
-        <ion-col size="5" offset="1">
+        <ion-col size="6" offset="1" class="ticket">
           <ion-item>
             <ion-label>Fecha:12-12-12</ion-label>
           </ion-item>
@@ -40,14 +51,19 @@
         <ion-col size="12" class="ion-text-justify">Descripción Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur exercitationem provident voluptatum in obcaecati ipsum iure, eveniet placeat sequi est tempore, omnis temporibus natus architecto sunt hic impedit ad itaque.</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="6">
-          <ion-item>
+        <ion-col size="5">
+          <ion-item class="ticket">
             <ion-label>Folio: 00</ion-label>
           </ion-item>
         </ion-col>
-        <ion-col size="6">
+        <ion-col size="7" class="ticket">
           <ion-item>
-            <ion-label>Visita www.linkom.mx</ion-label>
+            <ion-label>Costo: $00</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item> 
+            <p class="aviso">Visita www.linkom.mx, para más información sobre términos y condiciones</p>
           </ion-item>
         </ion-col>
       </ion-row>

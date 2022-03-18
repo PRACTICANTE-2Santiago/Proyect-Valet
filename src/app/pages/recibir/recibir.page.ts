@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { ModalTicketPage } from '../modal-ticket/modal-ticket.page';
-import { Comercios } from '../services/modulo-comercios.service';
-import { ModuloRecibirAutoService, Recibir } from '../services/modulo-recibir-auto.service';
+import { ModuloComerciosService, Comercios } from '../services/modulo-comercios.service';
+import { CarPhoto, PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-recibir',
@@ -12,25 +12,31 @@ import { ModuloRecibirAutoService, Recibir } from '../services/modulo-recibir-au
 })
 export class RecibirPage implements OnInit {
 
-
+  car: CarPhoto[];
   comercio: Comercios[];
   
   constructor( private modalCtrl: ModalController,
-               private service: ModuloRecibirAutoService) { }
-
-
-  ngOnInit() {
-    this.service.getAll().subscribe(response => {
-      //this.auto = response;
-      console.log(response);
+    private service: ModuloComerciosService,
+    private photoService: PhotoService) { }
+    
+    
+    ngOnInit() {
+      this.service.getAllComercios().subscribe(response => {
+        //this.auto = response;
+        console.log(response);
+        
+      })
+    }
+    
+    addPhotoGallery(){
+      this.photoService.addNewToGallery();
       
-    })
-  }
-
-  onSubmit(){
-    //console.log(formulario);
-  }
-  async nextpage(formulario: NgForm ){
+    }
+    
+    onSubmit(){
+      //console.log(formulario);
+    }
+    async nextpage(formulario: NgForm ){
     
     //this.service.recibirAuto(registro).subscribe(response =>console.log(response));
     const modal = await this.modalCtrl.create({

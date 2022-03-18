@@ -1,46 +1,4 @@
 <ion-app>
-
-  <ion-menu side="start" menuId="menuPrincipal" contentId="main">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="end">
-          <ion-avatar style="padding: 5px;">
-            <img src="/assets/spider.jpeg" alt="">
-          </ion-avatar>
-        </ion-buttons>
-        <ion-title>Name User</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content >
-      <ion-list color="primary" style="padding: 0px;">
-      <ion-menu-toggle *ngFor="let n of menu | async" color="primary">
-        <ion-item [routerLink]="n.redirectTo"
-                  detail
-                  color="primary">
-          <ion-icon slot="start" [name]="n.icon"></ion-icon>
-          <ion-label>{{n.name}}</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list>
-    <ion-list style="padding: 0px;">
-      <ion-menu-toggle color="primary">
-        <ion-item color="primary">
-          <ion-icon slot="start" name="log-out"></ion-icon>
-          <ion-label>Cerrar Sesión</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list>
-    </ion-content>
-    <ion-footer>
-      <ion-toolbar>
-        <div class="ion-padding">
-          <label>powered by linkom ® v.17.11.18</label>
-        </div>
-      </ion-toolbar>
-    </ion-footer>
-  </ion-menu>
-
-  <ion-router-outlet id="main"></ion-router-outlet>
-
+  <ion-router-outlet></ion-router-outlet>
 </ion-app>
 

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 
 @Component({
@@ -10,11 +11,14 @@ export class ModalTicketPage implements OnInit {
   
   @Input() auto=[];
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
     console.log(this.auto);
     
+  }
+  cancel(){
+    this.modalCtrl.dismiss();
   }
 
 }

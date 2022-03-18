@@ -3,8 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
+    path: 'login',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {

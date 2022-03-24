@@ -19,4 +19,9 @@ export class EntregadosPage implements OnInit {
     });
   }
 
+  buttonDetails(auto: Entregados){
+    console.log(auto);
+    
+  }
+
 }

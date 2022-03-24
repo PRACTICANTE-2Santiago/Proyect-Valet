@@ -3,9 +3,9 @@
 <ion-content>
   <ion-router-outlet class="relleno" id="mani"></ion-router-outlet>
     <ion-card class="entregados">
-        <ion-list >
-            <ion-item-sliding *ngFor="let auto of entregado">
-              <ion-item >
+        <ion-list *ngFor="let auto of entregado">
+            <ion-item-sliding >
+              <ion-item *ngIf="auto.condiciones == '3' " (click)="buttonDetails(auto)" >
                 <ion-label>
                   <h3>Placas: {{auto.placas.toUpperCase()}}</h3>
                   <p>Salida:  {{auto.fecha_entregado | date: 'short'}}</p>

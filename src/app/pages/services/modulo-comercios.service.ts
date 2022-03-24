@@ -30,8 +30,8 @@ export class ModuloComerciosService {
     return this.http.get<[Comercios]>(this.url);
   }
 
-  getByIDComercios( id: string){
-    return this.http.get<[Comercios]>(this.url + '/' + id);
+  getByIDComercios( id_valet: string){
+    return this.http.get<[Comercios]>(this.url+'?id_valet='+id_valet);
   }
 
   

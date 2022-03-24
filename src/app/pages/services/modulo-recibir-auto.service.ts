@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 
 export interface Recibir {
   id?: string;
+  id_comercios?: string;
   id_valet?: string;
   placas?: string;
   descripcion?: string;
@@ -47,7 +48,7 @@ export class ModuloRecibirAutoService {
   }
 
   recibirAuto(recibir: Recibir){
-    return this.http.post(this.url+ '/', recibir);
+    return this.http.post(this.url, recibir);
   }
   actualizar(recibir: Recibir, id: string){
     return this.http.put(this.url + '/' + id, recibir);

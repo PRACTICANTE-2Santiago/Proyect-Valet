@@ -11,6 +11,9 @@ export class ModalTicketPage implements OnInit {
   
   @Input() auto=[];
 
+  //link: string = 'hello world';
+  link: string = "http;//192.168.1.64/valetparking/plataforma/cliente/detalle.php?id_val=2%26id=Lambo";
+
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {

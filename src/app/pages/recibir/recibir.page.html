@@ -1,6 +1,6 @@
 <app-header titulo="Recibir Auto"></app-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" >
     <ion-router-outlet class="relleno" id="mani"></ion-router-outlet>
     <ion-card class="card">
         
@@ -12,11 +12,14 @@
             <br>
             <br>
             <br>
-
             <ion-item>
+                <ion-label>Fecha Entrada</ion-label>
+                <ion-datetime ngModel name="fecharegistro" locale="es-MX" value="{{fechaRe | date: dateFormat }}" displayFormat="DD-MM-YYYY HH:mm:ss"></ion-datetime>
+            </ion-item>
+            <ion-item  >
                 <ion-label>Establecimiento: </ion-label>
-                <ion-select ngModel name="id_comercio" placeholder="kentoki" >
-                    <ion-select-option *ngFor="let comers of comercio" value="{{comers.id}}"  >{{comers.nombre}}</ion-select-option>
+                <ion-select ngModel name="id_comercios" >
+                    <ion-select-option  *ngFor="let comers of comercio" value="{{comers['id']}}"  >{{comers['nombre']}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <br>

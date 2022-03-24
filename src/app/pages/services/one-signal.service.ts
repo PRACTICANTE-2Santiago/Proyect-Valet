@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { OneSignal, OSNotification, OSNotificationPayload } from '@ionic-native/onesignal/ngx';
 import { oneSignalApi } from 'src/environments/environment';
-import { firebaseConfig } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 import { Storage } from '@ionic/storage-angular';
 
 
@@ -29,7 +29,7 @@ export class OneSignalService {
   }
 
   inicializarConfiguracion(){
-    this.oneSignal.startInit(oneSignalApi.apiKey, firebaseConfig.messagingSenderId);
+    this.oneSignal.startInit(oneSignalApi.apiKey, environment.firebase.messagingSenderId);
 
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 

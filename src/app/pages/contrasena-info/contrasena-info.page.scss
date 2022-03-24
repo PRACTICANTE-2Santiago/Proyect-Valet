@@ -1,0 +1,83 @@
+ion-header{
+    --ion-background-color:#ffffff;
+    --ion-text-color:#b39b75;
+         
+   }
+        
+   .primer_titulo1{
+    font-size: 125%;
+    color: #083e54;
+    font-family: medium;
+    text-align: justify;
+    padding-left: 50px;
+    padding-right: 50px;
+
+  }
+  
+  .primer_titulo2{
+    font-size: 125%;
+    color: #083e54;
+    font-family: bold;
+    text-align: center;
+  }
+  .primer_titulo2 span{
+    color: #b39b75;
+  }
+  
+  .primer_titulo{
+    
+    text-align: center;
+  }
+  
+   .regreso{
+      color: #083e54;
+    }
+   
+    .title{
+       font-size: 100%;
+      color: #083e54;
+       font-family: bold;
+     }
+   
+   
+     .subtitle{
+       font-size: 100%;
+      color: #083e54;
+       font-family: medium;
+     }
+   
+     .relleno{
+        padding-left: 10px;
+        padding-right: 10px;
+        --ion-background-color: #b39b75;
+       --ion-text-color:#083e54;
+       --border-color: #083e54;
+
+     }
+   
+
+     .relleno2{
+        padding-left: 10px;
+        padding-right: 10px;
+        --ion-text-color:#b39b75;
+        --border-color: #083e54;
+      }
+   
+      
+     ion-button{
+      height: 50px;
+      --color:#ffffff;
+      --background: #b39b75;
+      font-weight:bold;
+      outline-color: #b39b75;
+      font-family: bold;
+      font-size: 100%;
+      text-align: center;
+  
+    
+    }
+
+    .center{
+        text-align: center;
+      }
+   

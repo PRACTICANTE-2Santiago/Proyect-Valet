@@ -48,4 +48,13 @@ export class AuthService {
     });
   }
 
+
+  updatePass(email: string){
+    return new Promise((res, rejected) => {
+      // this.aFauth.confirmPasswordReset('c8tKud_WC_X50UyDRhy-UmIskqr8EIC8vIL8mcvM6YsAAAF8n-MatQ', '122333');
+      this.authF.sendPasswordResetEmail(email).then(pass => {
+        res(pass);
+      }).catch(err => rejected(err));
+    });
+  }
 }

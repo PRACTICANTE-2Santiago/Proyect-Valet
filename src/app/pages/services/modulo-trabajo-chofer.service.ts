@@ -23,4 +23,5 @@ export class ModuloTrabajoChoferService {
   getChoferTrabajo(id_chofer: string){
     return this.http.get<[TrabajoChofer]>(this.url+'?id_chofer='+id_chofer);
   }
+ 
 }

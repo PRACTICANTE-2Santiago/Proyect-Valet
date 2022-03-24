@@ -1,0 +1,47 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button  class="regreso" (click)="closeModal()">
+       <ion-icon name="close"></ion-icon>
+      </ion-button>
+     </ion-buttons>
+     <ion-item lines="none">
+      <label class="title">Recuperar Contraseña</label>
+      </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <br>
+  
+  <div class="primer_titulo">
+    <h3 class="primer_titulo1 text-center" >Ingrese los siguentes datos:</h3>
+  </div>
+  <form [formGroup]="myForm" (submit)="onSubmit()">
+    <ion-item  class="cuadro">
+      <ion-input type="text" [(ngModel)]="nip" placeholder="NIP" formControlName="nip" required></ion-input>
+    </ion-item>
+    <ion-item  class="cuadro">
+      <ion-input type="text" [(ngModel)]="correo" placeholder="Correo Electrónico" formControlName="correo" required></ion-input>
+    </ion-item>
+    <div class="primer_titulo">
+      <h3 class="primer_titulo1 text-center" >Ingrese su nueva contraseña:</h3>
+    </div>
+    <ion-item  class="cuadro">
+      <ion-input type="text" [(ngModel)]="pass" placeholder="Nueva Contraseña" formControlName="pass" [type]="passworType" required></ion-input>
+      <ion-icon slot="end" [name]="passworToggleIcon" [color]="passwordShow === true ? 'white' : 'white'"  (click)="togglePassword()"></ion-icon>
+    </ion-item>
+    <div class="primer_titulo">
+      <h3 class="primer_titulo1 text-center" >(8 dígitos, letras y números)</h3>
+    </div>
+
+    <br>
+    <br>
+      <ion-button  type="submit" >Enviar</ion-button> 
+      <br>
+      <br>
+    </form>
+        
+</ion-content>

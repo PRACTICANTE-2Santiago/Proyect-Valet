@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'modal-estacionado',
     loadChildren: () => import('./pages/modal-estacionado/modal-estacionado.module').then( m => m.ModalEstacionadoPageModule)
   },
+  {
+    path: 'contrasena-info',
+    loadChildren: () => import('./pages/contrasena-info/contrasena-info.module').then( m => m.ContrasenaInfoPageModule)
+  },
 ];
 
 @NgModule({

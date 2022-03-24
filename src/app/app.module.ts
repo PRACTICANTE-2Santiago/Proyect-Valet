@@ -27,17 +27,19 @@ import { ModalUbicacionPage } from './pages/modal-ubicacion/modal-ubicacion.page
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Network } from '@ionic-native/network/ngx'
 import { CommonModule } from '@angular/common';
+import { ContrasenaPage } from './pages/contrasena/contrasena.page';
 
 @NgModule({
   declarations: [AppComponent, 
     ModalTicketPage,
     ModalEstacionadoPage, 
     ModalSolicitudPage, 
-    ModalUbicacionPage],
+    ModalUbicacionPage,
+  ContrasenaPage],
   entryComponents: [ModalTicketPage,
     ModalEstacionadoPage,
     ModalSolicitudPage,
-    ModalUbicacionPage],
+    ModalUbicacionPage,ContrasenaPage],
   imports: [BrowserModule,
             CommonModule,
             AppRoutingModule,

@@ -29,12 +29,16 @@ export class UsuarioChoferService {
 
   constructor( private http : HttpClient) { }
 
-  login(usuario: string, contrasenia: string, id_pin: string){
-    return this.http.get<[Chofer]>(this.url+'?usuario='+usuario+'&contrasenia='+contrasenia+'&id_pin='+id_pin);
+  login(usuario: string, contrasenia: string, id: string){
+    return this.http.get<[Chofer]>(this.url+'?usuario='+usuario+'&contrasenia='+contrasenia+'&id_valet='+id);
    
   }
 
   updateToken(id: string, token: string){
     return this.http.put(this.url+'?id='+id+'&token='+token,0);
+  }
+
+  updateContra(usuario: Chofer, id: string, contrasenia: string){
+    return this.http.put(this.url+'?id='+id+'&contrasenia='+contrasenia,usuario);
   }
 }

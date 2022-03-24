@@ -2,13 +2,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
-import { AlertController, IonInput } from '@ionic/angular';
+import { AlertController, IonInput, ModalController } from '@ionic/angular';
 import { Storage} from '@ionic/storage-angular';
 import { UsuarioChoferService } from '../services/usuario-chofer.service';
 import { ModuloValetService } from '../services/modulo-valet.service';
 import { OneSignalService } from '../services/one-signal.service';
 import { AuthService } from '../services/auth.service';
 import { PinService } from '../services/pin.service';
+import { ContrasenaPage } from '../contrasena/contrasena.page';
 
 @Component({
   selector: 'app-login',
@@ -46,7 +47,9 @@ export class LoginPage implements OnInit {
                private storage: Storage,
                private router: Router,
                private oneSignalService: OneSignalService,
-               private alertController: AlertController) { }
+               private alertController: AlertController,
+               private modalCtrl: ModalController,
+               ) { }
 
   ngOnInit() {
     this.storage.create();
@@ -56,7 +59,7 @@ export class LoginPage implements OnInit {
         
         this.storage.get('datos').then(async (val) => {
           if (val !== null) {
-            this.emailFb1=val[8];
+            this.emailFb1=val[2];
             if(this.emailFb1 === response['email']){
               this.input.forEach(element => {
                 element.value = '';
@@ -74,50 +77,47 @@ export class LoginPage implements OnInit {
 
 
   onSubmit(){
-    if ( this.myForm.value.nip !== '23' ) {
-      console.log(this.myForm.value);
+    if ( this.myForm.value.nip !== '01' ) {
+      //console.log(this.myForm.value);
       
       this.presentAlert('Datos Inválidos');
       return;
     }
     this.pinService.pin(this.myForm.value.nip).subscribe((responses)=>{
       if(responses){
-        this.valetService.get(this.myForm.value.nip).subscribe((responseR)=>{
-          if(responseR){
-            const objValet = (responseR);
-            const idPin = objValet['id_pin'];
-            this.service.login(this.myForm.value.usuario,this.myForm.value.contrasenia,idPin).subscribe((responseU)=>{
+         //   console.log("pin"+responses);
+      
+            const objValet = (responses);
+            const id = objValet['id'];
+            const pin = objValet['id_pin'];
+            const nombre_valet = objValet['nombre'];
+            this.service.login(this.myForm.value.usuario,this.myForm.value.contrasenia,id).subscribe((responseU)=>{
               if(responseU){
                 
-                console.log(responseU);
+                console.log("usuario"+responseU);
                     const obj = (responseU);
                     const correo = obj['correo_electronico'];
-                    const id = obj['id'];
+                    const id_chofer = obj['id'];
                     const tipo = obj['id_pin'];
-                    //Sacar id subusuario
-                    const subUsu = obj['usuario'];
-                    console.log(subUsu);
+
                     let cadena;
                     const token = obj['token'];
                     console.log("onesignal"+this.oneSignalService.choferId);
                     console.log(this.oneSignalService);
                     if( token === '') {
-                      this.service.updateToken(id, this.oneSignalService.choferId).subscribe(response => {
-                        console.log(response);
+                     
+                      this.service.updateToken(id_chofer, this.oneSignalService.choferId).subscribe(response => {
+                   //     console.log(response);
                       });
                     } else if( token !== this.oneSignalService.choferId) {
-                      this.service.updateToken(id, this.oneSignalService.choferId).subscribe( response => {
-                        console.log(response);
+                      
+                      this.service.updateToken(id,this.oneSignalService.choferId).subscribe( response => {
+                    //    console.log(response);
                       });
                     }
 
-                    if(Number(subUsu) !== 0){
-                      cadena = [this.myForm.value.nip,subUsu,tipo,correo,id,this.oneSignalService.choferId];
-                    }else {
-                      cadena = [this.myForm.value.nip,id,tipo,correo,subUsu,this.oneSignalService.choferId];
-                    }
-
-                    this.storage.set('datos' , cadena);
+                   cadena = [this.myForm.value.pin,nombre_valet,id_chofer];
+                   this.storage.set('datos' , cadena);
 
                     //METODO FIREBASE
 
@@ -136,7 +136,7 @@ export class LoginPage implements OnInit {
                       this.input.forEach(element => {
                         element.value = '';
                       });
-                      this.router.navigate(['/inicio']);
+                      this.router.navigate(['/home']);
                     }).catch(() => this.presentAlert('Datos Inválidos'));
                   });
               }else{
@@ -149,11 +149,7 @@ export class LoginPage implements OnInit {
              //console.log('Conexión Invalida');
           }
         });
-      }else{
-        this.presentAlert('Datos Inválidos');
-       // console.log('Pin Incorrecto');
-      }
-    });
+      
   }
 
   public togglePassword(){
@@ -180,5 +176,18 @@ export class LoginPage implements OnInit {
 
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
+  }
+
+  ver(){
+    this.modalCtrl
+    .create({
+      component: ContrasenaPage,
+    })
+    .then(modal => {
+      modal.present();
+      return modal.onDidDismiss();
+    }).then(({data, role})=>{
+
+    });
   }
 }

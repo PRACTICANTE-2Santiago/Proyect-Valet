@@ -4,8 +4,8 @@ import { environment } from 'src/environments/environment';
 
 export interface TrabajoChofer {
   id?: string;
-  id_chofer?: string;
   id_comercios?: string;
+  id_valet?: string;
   fecha_registrp?: string;
   estatus?: string;
   nombre?: string;

@@ -4,7 +4,8 @@ import { environment } from 'src/environments/environment';
 
 export interface Entregados {
   id?: string;
-  id_valet?: string;
+  id_comercios?: string;
+  id_chofer?: string;
   placas?: string;
   descripcion?: string;
   foto1?:string;

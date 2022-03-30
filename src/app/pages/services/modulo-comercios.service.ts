@@ -29,10 +29,13 @@ export class ModuloComerciosService {
   getAllComercios(){
     return this.http.get<[Comercios]>(this.url);
   }
-
+  getByIDComers( id: string){
+    return this.http.get<[Comercios]>(this.url+'?id='+id);
+  }
   getByIDComercios( id_valet: string){
     return this.http.get<[Comercios]>(this.url+'?id_valet='+id_valet);
   }
+  
 
   
 }

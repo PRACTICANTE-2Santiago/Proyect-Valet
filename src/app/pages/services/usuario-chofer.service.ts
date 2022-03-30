@@ -41,4 +41,7 @@ export class UsuarioChoferService {
   updateContra(usuario: Chofer, id: string, contrasenia: string){
     return this.http.put(this.url+'?id='+id+'&contrasenia='+contrasenia,usuario);
   }
+  getById(id_chofer: string){
+    return this.http.get<[Chofer]>(this.url+'?id='+id_chofer)
+  }
 }

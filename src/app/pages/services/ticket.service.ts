@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 
-export interface Recibir {
+export interface Ticket {
   id?: string;
   id_comercios?: string;
-  id_valet?: string;
+  id_chofer?: string;
   placas?: string;
   descripcion?: string;
   foto1?:string;
@@ -29,32 +29,21 @@ export interface Recibir {
   condiciones?: string;
   estatus?: string;
 }
-
 @Injectable({
   providedIn: 'root'
 })
-export class ModuloRecibirAutoService {
+export class TicketService {
 
 
   private url = environment.server + 'automovil.php';
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAll(){
-    return this.http.get<[Recibir]>(this.url);
-  }
-
-  getById(id: string){
-    return this.http.get<[Recibir]>(this.url + '/' + id);
+  getById(placas: string){
+    return this.http.get<[Ticket]>(this.url + '?placas=' + placas);
   }
 
-  recibirAuto(recibir: Recibir){
-    return this.http.post(this.url, recibir);
-  }
-  actualizar(recibir: Recibir, id: string){
-    return this.http.put(this.url + '/' + id, recibir);
-  }
-  cancelarServicio(id: string){
-    return this.http.delete(this.url + '/' + id);
+  cancelarService(id: string, tick: Ticket, ){
+    return this.http.put(this.url+ '?id='+id, tick);
   }
 }

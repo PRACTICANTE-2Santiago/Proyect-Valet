@@ -6,7 +6,7 @@
         
         <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
             <ion-list-header  class="ion-align-items-center">
-                    <ion-label class="ion-text">Recibir Auto</ion-label>
+                    <ion-label class="ion-text">{{Valet}}</ion-label>
                     <br>
             </ion-list-header>
             <br>
@@ -14,12 +14,13 @@
             <br>
             <ion-item>
                 <ion-label>Fecha Entrada</ion-label>
-                <ion-datetime ngModel name="fecharegistro" locale="es-MX" value="{{fechaRe | date: 'short' }}" displayFormat="DD-MM-YYYY HH:mm:ss"></ion-datetime>
+                    
+                <ion-datetime  ngModel name="fecharegistro"   locale="es-MX" value="{{fechaRe}}" displayFormat="YYYY-MM-DD HH:mm:ss"></ion-datetime>
             </ion-item>
             <ion-item  >
                 <ion-label>Establecimiento: </ion-label>
                 <ion-select ngModel name="id_comercios" >
-                    <ion-select-option  *ngFor="let comers of comercio" value="{{comers['id']}}"  >{{comers['nombre']}}</ion-select-option>
+                    <ion-select-option  *ngFor="let comers of comercios" value="{{comers['id']}}"  >{{comers['nombre']}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <br>
@@ -58,7 +59,7 @@
                 </ion-grid>
                 <br>
                 <br>
-                <ion-button (click)="nextpage()" class="btn" color="primary" [disabled]="formulario.invalid" type="submit">
+                <ion-button class="btn" color="primary" [disabled]="formulario.invalid" type="submit">
                 Generar Ticket
             </ion-button>
         </form>

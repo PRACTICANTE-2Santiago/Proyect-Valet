@@ -6,7 +6,7 @@
           <img src="/assets/spider.jpeg" alt="">
         </ion-avatar>
       </ion-buttons>
-      <ion-title>Name User</ion-title>
+      <ion-title>{{usuario}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content *ngIf="modulos">
@@ -59,7 +59,7 @@
       <ion-buttons slot="start" >
         <ion-menu-button menu="menuInicio"></ion-menu-button>
       </ion-buttons>
-      <ion-title >Nombre Valet</ion-title>
+      <ion-title >{{Valet}}</ion-title>
     </ion-toolbar>
     
   </ion-header>
@@ -69,13 +69,13 @@
   <ion-router-outlet id="main"></ion-router-outlet>
   <ion-row>
     <ion-col size="12" size-md="12">
-      <ion-card class="cardMenu" [routerLink]="['/recibir']">
-          <ion-col size="12">
+      <ion-card class="cardMenu" [routerLink]="['/recibir']" >
+          <ion-col size="12" >
             <div>
               <ion-icon slot="start" name="car-sport" color="light" class="ionIcon"></ion-icon>
             </div>
             <div>
-              <ion-card-title ><strong>Recibir</strong></ion-card-title>
+              <ion-card-title ><strong> Recibir</strong></ion-card-title>
             </div>
           </ion-col>
       </ion-card>

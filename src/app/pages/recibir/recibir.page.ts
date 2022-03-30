@@ -18,13 +18,17 @@ export class RecibirPage implements OnInit {
 
   
   image: CarPhoto[];
-  fechaRe: string = new Date().toISOString();
-  comercio: Comercios[];
+  fecha: any =  new Date();
+  fechaRe: string = this.fecha.toISOString();
+  comercios: Comercios[];
   areatrabajo: TrabajoChofer[];
   registro: Recibir[];
   car: any;
-  recibido: any;
-
+  placasProp: string;
+  Valet: string;
+  choferid: string;
+  idcomers: string;
+  comercio: string;
 
   constructor( private modalCtrl: ModalController,
     private service: ModuloComerciosService,
@@ -35,17 +39,25 @@ export class RecibirPage implements OnInit {
     
     
     ngOnInit() {
-      this.storage.create();
-      const id = '2';
-      const id_chofer = '2';
-      this.service.getByIDComercios(id).subscribe(response => {
-        this.comercio = response;
-        console.log(response);        
-      });
-      this.areaChofer.getChoferTrabajo(id_chofer).subscribe(response =>{
-        console.log(response);
+      this.storage.get('datos').then(async (val)=>{
+        this.Valet=val[1];
+        this.choferid=val[2];
+        //console.log(this.choferid);
+        this.areaChofer.getChoferTrabajo(this.choferid).subscribe(response =>{
+          const comers = Object(response);
+          //const comercio = comers['nombre'];
+          this.idcomers= comers['id_valet'];
+          //console.log("Nombre "+ comercio);
+          
+          this.service.getByIDComercios(this.idcomers).subscribe(responses => {
+            this.comercios = responses;
+            console.log(responses);        
+          });
+                
+        });
         
-      })
+      });
+      
     }
     
     addPhotoGallery(){
@@ -53,14 +65,14 @@ export class RecibirPage implements OnInit {
       
     }
     
-    onSubmit(formulario: NgForm){
-      console.log(formulario.value);
+    async onSubmit(formulario: NgForm){
+      //console.log(formulario.value);
       
       this.storage.get('datos').then(async(val) => {
           this.car ={
             id: null,
             id_comercios: formulario.value.id_comercios,
-            id_chofer: '2',
+            id_chofer: val[2],
             placas: formulario.value.placas,
             descripcion: formulario.value.descripcion,
             foto1: 'none',
@@ -79,30 +91,27 @@ export class RecibirPage implements OnInit {
             comentarios_entregado: null,
             fecha_notificado: null,
             comentarios_cliente: null,
-            token: 'cbwiuehfywxh8h92hinxi2nj',
-            condiciones: '1',
+            token: '',
+            condiciones: '0',
             estatus: '1'
           };
           const auto = this.car;
-          console.log(auto);
+          //console.log(auto);
           this.recibir.recibirAuto(auto).subscribe(response =>{
-                response
+            const autoRegisto = Object(response);
+            //this.placasProp = autoRegisto['placas'];
+            
           });
+          const modal = await this.modalCtrl.create({
+            component: ModalTicketPage,
+            componentProps: { auto: auto }
+          });
+          await modal.present();
+          
       });
-     
+      
     }
-
-    async nextpage(auto){
     
-    //this.service.recibirAuto(registro).subscribe(response =>console.log(response));
-    const modal = await this.modalCtrl.create({
-      component: ModalTicketPage,
-      componentProps: {
-        auto
-      }
-    });
-    await modal.present();
-  }
 
   async ngOnInitpho(){
 

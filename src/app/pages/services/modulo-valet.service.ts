@@ -21,7 +21,11 @@ export class ModuloValetService {
   private url = environment.server + 'valet.php';
   constructor(private http: HttpClient) { }
 
-  get(id: string){
-    return this.http.get<[Valet]>(this.url+'?id_pin='+id)
+  get(id_pin: string){
+    return this.http.get<[Valet]>(this.url+'?id_pin='+id_pin);
+  }
+
+  getByIdValet( id: string){
+    return this.http.get<[Valet]>(this.url+'?id='+id);
   }
 }

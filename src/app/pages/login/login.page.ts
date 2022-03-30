@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
         
         this.storage.get('datos').then(async (val) => {
           if (val !== null) {
-            this.emailFb1=val[2];
+            this.emailFb1=val[8];
             if(this.emailFb1 === response['email']){
               this.input.forEach(element => {
                 element.value = '';
@@ -91,10 +91,10 @@ export class LoginPage implements OnInit {
             const id = objValet['id'];
             const pin = objValet['id_pin'];
             const nombre_valet = objValet['nombre'];
-            this.service.login(this.myForm.value.usuario,this.myForm.value.contrasenia,id).subscribe((responseU)=>{
+            this.service.login(this.myForm.value.usuario,this.myForm.value.contrasenia,id ).subscribe((responseU)=>{
               if(responseU){
                 
-                console.log("usuario"+responseU);
+                //console.log("usuario"+ responseU);
                     const obj = (responseU);
                     const correo = obj['correo_electronico'];
                     const id_chofer = obj['id'];
@@ -102,21 +102,27 @@ export class LoginPage implements OnInit {
 
                     let cadena;
                     const token = obj['token'];
+                    //console.log(token);
+                    
+                   // console.log(this.oneSignalService.choferId);
+
                     console.log("onesignal"+this.oneSignalService.choferId);
-                    console.log(this.oneSignalService);
+                    cadena = [this.myForm.value.pin,nombre_valet,id_chofer];
+                    
+                    
                     if( token === '') {
                      
                       this.service.updateToken(id_chofer, this.oneSignalService.choferId).subscribe(response => {
-                   //     console.log(response);
+                        console.log(response);
                       });
                     } else if( token !== this.oneSignalService.choferId) {
                       
                       this.service.updateToken(id,this.oneSignalService.choferId).subscribe( response => {
-                    //    console.log(response);
+                        console.log(response);
                       });
                     }
 
-                   cadena = [this.myForm.value.pin,nombre_valet,id_chofer];
+                   
                    this.storage.set('datos' , cadena);
 
                     //METODO FIREBASE

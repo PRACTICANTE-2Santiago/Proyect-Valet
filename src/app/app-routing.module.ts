@@ -35,8 +35,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/entregados/entregados.module').then( m => m.EntregadosPageModule)
   },
   {
-    path: 'reportes',
-    loadChildren: () => import('./pages/reportes/reportes.module').then( m => m.ReportesPageModule)
+    path: 'historial',
+    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
   },
   {
     path: 'login',
@@ -62,6 +62,8 @@ const routes: Routes = [
     path: 'contrasena-info',
     loadChildren: () => import('./pages/contrasena-info/contrasena-info.module').then( m => m.ContrasenaInfoPageModule)
   },
+  
+
 ];
 
 @NgModule({

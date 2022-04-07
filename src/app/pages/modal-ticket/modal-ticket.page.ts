@@ -22,8 +22,12 @@ export class ModalTicketPage implements OnInit {
   valet: Valet[];
   comercioName: string;
   tick: any;
-  //link: string = 'hello world';
-  link: string = "http://192.168.1.64/valetparking/plataforma/cliente/detalle.php?id_val={{}}&id={{}}";
+  link: string;
+  idValet: string;
+  placas: string;
+  idcar: string;
+  idcomers: string;
+  
 
   constructor(private modalCtrl: ModalController,
               private generateTicket: TicketService,
@@ -34,24 +38,31 @@ export class ModalTicketPage implements OnInit {
               private alertCtrl: AlertController) { }
 
   async ngOnInit() {
-    //console.log(this.auto);
-    const placas = this.auto['placas'];
-    this.generateTicket.getById(placas).subscribe( response => {
+    console.log(this.auto);
+    this.placas = this.auto['placas'];
+    this.generateTicket.getById(this.placas).subscribe( response => {
       const ticketObj = Object(response);
       const comersId = ticketObj['id_comercios'];
       this.tickets = ticketObj;
+      this.idcar = ticketObj['id'];
+
         //console.log(comersId);
       this.servicecomercio.getByIDComers(comersId).subscribe(async comercio => {
         this.comer = comercio;
         //const comersObj = Object(comercio);
-        const idValet = this.comer['id_valet'];
+        this.idValet = this.comer['id_valet'];
+        this.idcomers = this.comer['id'];
         const comers = this.comer['nombre'];
         this.comercioName = comers;
         //console.log(comersObj );
        
-        this.serviceValet.getByIdValet(idValet).subscribe(valetSer => {
+        this.serviceValet.getByIdValet(this.idValet).subscribe(valetSer => {
           this.valet = valetSer;
           //console.log(this.valet);
+          this.link =  'http://192.168.1.64/valetparking/plataforma/cliente/detalle.php?id_val='+this.idValet+'%26id='+this.idcar+'%26id_comercios='+this.idcomers;
+
+          console.log(this.link);
+          
         });
         
       });
@@ -72,8 +83,15 @@ export class ModalTicketPage implements OnInit {
       message: 'Desea Cancelar este ticket!!',
       buttons: [
         {
+          text: 'Cancelar',
+          handler: () =>{
+            console.log('cancel');
+            
+          }
+        },
+        {
           text: 'CONFIRMAR',
-          cssClass: 'danger',
+          cssClass: 'rojo',
           handler: () =>{
             this.tick = {
               id: tickets.id,
@@ -86,13 +104,7 @@ export class ModalTicketPage implements OnInit {
             });
           }
         },
-        {
-          text: 'Cancelar',
-          handler: () =>{
-            console.log('cancel');
-            
-          }
-        }
+        
       ]
     })
     await alert.present();

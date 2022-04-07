@@ -15,7 +15,7 @@
             <ion-item>
                 <ion-label>Fecha Entrada</ion-label>
                     
-                <ion-datetime  ngModel name="fecharegistro"   locale="es-MX" value="{{fechaRe}}" displayFormat="YYYY-MM-DD HH:mm:ss"></ion-datetime>
+                <ion-datetime locale="es-MX" placeholder="{{fechaRe | date: 'short'}}" disabled="true" ></ion-datetime>
             </ion-item>
             <ion-item  >
                 <ion-label>Establecimiento: </ion-label>
@@ -53,7 +53,7 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col size="6" *ngFor="let photocar of photoService.photos; index as position">
-                            <ion-img [src]="photocar.webviewPath"></ion-img>
+                            <ion-img ngModel name="{{photocar.filepath}}" id="{{photocar.webviewPath}}" [src]="photocar.webviewPath"></ion-img>
                         </ion-col>
                     </ion-row>
                 </ion-grid>

@@ -22,6 +22,10 @@ export class EntregadosPage implements OnInit {
     });
   }
 
+  vercodeQR(auto){
+    
+  }
+
   async buttonDetails(auto: Entregados){
     this.cardetails = auto;
     const aler = await this.alertCtrl.create({

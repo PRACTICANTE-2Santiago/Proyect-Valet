@@ -25,21 +25,22 @@ import { ModalEstacionadoPage } from './pages/modal-estacionado/modal-estacionad
 import { ModalSolicitudPage } from './pages/modal-solicitud/modal-solicitud.page';
 import { ModalUbicacionPage } from './pages/modal-ubicacion/modal-ubicacion.page';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { Geolocation }  from '@ionic-native/geolocation/ngx'
 import { Network } from '@ionic-native/network/ngx'
 import { CommonModule } from '@angular/common';
 import { ContrasenaPage } from './pages/contrasena/contrasena.page';
+import { SolicitudesPage } from './pages/solicitudes/solicitudes.page';
 
 @NgModule({
   declarations: [AppComponent, 
-    ModalTicketPage,
-    ModalEstacionadoPage, 
-    ModalSolicitudPage, 
+    ModalTicketPage, 
     ModalUbicacionPage,
-  ContrasenaPage],
+    ContrasenaPage,
+    ],
   entryComponents: [ModalTicketPage,
-    ModalEstacionadoPage,
-    ModalSolicitudPage,
-    ModalUbicacionPage,ContrasenaPage],
+    ModalUbicacionPage,
+    ContrasenaPage,
+    ],
   imports: [BrowserModule,
             CommonModule,
             AppRoutingModule,
@@ -53,7 +54,7 @@ import { ContrasenaPage } from './pages/contrasena/contrasena.page';
             ReactiveFormsModule,
             ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    AndroidPermissions, Storage, Network, OneSignal, StatusBar, Vibration, FileTransfer, FileOpener, EmailComposer, FileChooser ],
+    AndroidPermissions, Storage, Network, OneSignal, StatusBar, Vibration, FileTransfer, FileOpener, EmailComposer, FileChooser, Geolocation ],
   
   bootstrap: [AppComponent,],
 })

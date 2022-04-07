@@ -18,8 +18,7 @@ export class RecibirPage implements OnInit {
 
   
   image: CarPhoto[];
-  fecha: any =  new Date();
-  fechaRe: string = this.fecha.toISOString();
+  fechaRe: string ;
   comercios: Comercios[];
   areatrabajo: TrabajoChofer[];
   registro: Recibir[];
@@ -29,7 +28,7 @@ export class RecibirPage implements OnInit {
   choferid: string;
   idcomers: string;
   comercio: string;
-
+  
   constructor( private modalCtrl: ModalController,
     private service: ModuloComerciosService,
     private photoService: PhotoService,
@@ -39,6 +38,8 @@ export class RecibirPage implements OnInit {
     
     
     ngOnInit() {
+      const fecha: Date =  new Date();
+      this.fechaRe = fecha.getFullYear()+'-'+fecha.getMonth()+'-'+fecha.getDate()+' '+fecha.getHours()+':'+fecha.getMinutes()+':'+fecha.getSeconds();
       this.storage.get('datos').then(async (val)=>{
         this.Valet=val[1];
         this.choferid=val[2];
@@ -52,6 +53,8 @@ export class RecibirPage implements OnInit {
           this.service.getByIDComercios(this.idcomers).subscribe(responses => {
             this.comercios = responses;
             console.log(responses);        
+            console.log(this.fechaRe);
+            
           });
                 
         });
@@ -67,7 +70,7 @@ export class RecibirPage implements OnInit {
     
     async onSubmit(formulario: NgForm){
       //console.log(formulario.value);
-      
+      let aleatorio = Math.floor(Math.random() * (10000 - 0)) + 0;
       this.storage.get('datos').then(async(val) => {
           this.car ={
             id: null,
@@ -75,11 +78,11 @@ export class RecibirPage implements OnInit {
             id_chofer: val[2],
             placas: formulario.value.placas,
             descripcion: formulario.value.descripcion,
-            foto1: 'none',
+            foto1: formulario.value.filepath,
             foto2: 'none',
             foto3: 'none',
-            id_registro: formulario.value.fecharegistro,
-            fecha_registro: formulario.value.fecharegistro,
+            id_registro: aleatorio,
+            fecha_registro: this.fechaRe,
             id_ubicacion: null,
             latitud: null,
             longitud: null,

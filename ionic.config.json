@@ -1,6 +1,9 @@
 {
   "name": "ProyectoValet",
   "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
     "cordova": {}
   },
   "type": "angular"

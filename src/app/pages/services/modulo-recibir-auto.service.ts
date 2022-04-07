@@ -51,8 +51,8 @@ export class ModuloRecibirAutoService {
   recibirAuto(recibir: Recibir){
     return this.http.post(this.url, recibir);
   }
-  actualizar(recibir: Recibir, id: string){
-    return this.http.put(this.url + '/' + id, recibir);
+  actualizar(id: string, recibir: Recibir, ){
+    return this.http.put(this.url +'?id='+id,recibir);
   }
   cancelarServicio(id: string){
     return this.http.delete(this.url + '/' + id);

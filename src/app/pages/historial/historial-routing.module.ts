@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ReportesPage } from './reportes.page';
+import { HistorialPage } from './historial.page';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/reportes/estacionar',
+    redirectTo: '/historial/estacionar',
     pathMatch: 'full'
   },
   {
     path: '',
-    component: ReportesPage,
+    component: HistorialPage,
     children: [
       {
         path: 'estacionar',
@@ -37,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ReportesPageRoutingModule {}
+export class HistorialPageRoutingModule {}

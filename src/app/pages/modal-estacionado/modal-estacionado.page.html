@@ -1,6 +1,9 @@
 <app-header titulo="Estacionado"></app-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-router-outlet class="relleno" id="mani"></ion-router-outlet>
     <ion-card *ngFor="let auto of estacionados ">
         <ion-list  *ngIf="auto.estatus == '2'">

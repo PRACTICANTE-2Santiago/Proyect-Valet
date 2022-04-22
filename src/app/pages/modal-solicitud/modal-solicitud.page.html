@@ -1,6 +1,9 @@
 <app-header titulo="Solicitud"></app-header>
 
 <ion-content >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngFor="let auto of Solicitados ">
     <ion-list  *ngIf="auto.estatus === '3'">
         <ion-item-sliding  >

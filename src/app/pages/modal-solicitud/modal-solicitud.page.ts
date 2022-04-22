@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ModuloEntregadoService, Entregados } from '../services/modulo-entregado.service';
+import { TicketService } from '../services/ticket.service';
 
 @Component({
   selector: 'app-modal-solicitud',
@@ -11,9 +13,12 @@ export class ModalSolicitudPage implements OnInit {
 
   Solicitados: Entregados[];
   cardetails: any;
+  entregado: any;
 
   constructor(private service: ModuloEntregadoService,
-              private alertCtrl: AlertController) { }
+              private alertCtrl: AlertController,
+              private cancelService: TicketService,
+              private route: Router) { }
 
   ngOnInit() {
     this.service.getAll().subscribe(response=>{
@@ -75,9 +80,37 @@ export class ModalSolicitudPage implements OnInit {
             console.log('confirm');
             
           }
+        },
+        {
+          text: 'Entregar',
+          handler: () => {
+            console.log('confirm');
+            this.entregado = {
+              id: this.cardetails['id'],
+              estatus: '4'
+            }
+            const Entregado = this.entregado;
+            //console.log(Entregado);
+            this.cancelService.cancelarService(this.cardetails['id'], Entregado).subscribe(entragar =>{
+              entragar;
+              console.log('success');
+            });
+            this.route.navigate(['/home']);
+          }
         }
       ]
     })
     await aler.present();
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      this.service.getAll().subscribe(response=>{
+        
+      });
+      event.target.complete();
+    }, 200);
   }
 }

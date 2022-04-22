@@ -137,21 +137,21 @@ export class LoginPage implements OnInit {
                     }).catch(err =>this.presentAlert('Datos Inválidos ' + err));
                   }).catch(err =>{
                     console.log('Usuario ya creado: ' + this.myForm.value.contrasenia);
-                    console.log(err);
+                    //console.log(err);
                     this.authService.login(correo,this.myForm.value.contrasenia).then(resLogue=>{
                       this.input.forEach(element => {
                         element.value = '';
                       });
                       this.router.navigate(['/home']);
-                    }).catch(() => this.presentAlert('Datos Inválidos'));
+                    }).catch(() => this.presentAlert('Datos Inválidos error 1 '));
                   });
               }else{
-                this.presentAlert('Datos Inválidos');
+                this.presentAlert('Datos Inválidos error 2');
                 //console.log('No existe el usuario');
               }
             });
           }else{
-            this.presentAlert('Datos Inválidos');
+            this.presentAlert('Datos Inválidos error 3');
              //console.log('Conexión Invalida');
           }
         });

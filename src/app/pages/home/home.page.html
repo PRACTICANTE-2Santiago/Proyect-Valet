@@ -11,6 +11,7 @@
   </ion-header>
   <ion-content *ngIf="modulos">
     <div scrolly="true" style="max-height: auto;">
+      
 
       <ion-list class="itemMenu" style="padding: 0px;">
         <ion-item class="itemMenu" [routerLink]="['/recibir']">
@@ -66,6 +67,9 @@
   
   <!-- Contenido Pagina Principal-->
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-router-outlet id="main"></ion-router-outlet>
   <ion-row>
     <ion-col size="12" size-md="12">

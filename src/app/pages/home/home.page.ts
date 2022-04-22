@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Modulos } from '../services/modulos.service';
-import { MenuController, NavController, Platform } from '@ionic/angular';
+import { AlertController, MenuController, NavController, Platform } from '@ionic/angular';
 import { DataService } from 'src/app/pages/services/data.service';
 import { Storage } from '@ionic/storage-angular';
 import { AuthService } from '../services/auth.service';
@@ -9,6 +9,7 @@ import { Chofer, UsuarioChoferService } from '../services/usuario-chofer.service
 import { Router } from '@angular/router';
 import { ModuloTrabajoChoferService, TrabajoChofer } from '../services/modulo-trabajo-chofer.service';
 import { Comercios } from '../services/modulo-comercios.service';
+import { Network } from '@ionic-native/network/ngx';
 
 
 @Component({
@@ -32,6 +33,8 @@ export class HomePage implements OnInit {
               private service: UsuarioChoferService,
               private storage: Storage,
               private authService: AuthService,
+              private alertController: AlertController,
+              private network: Network,
               private router: Router,
               private navCtrl: NavController,
               private serviceChofer: UsuarioChoferService,
@@ -102,5 +105,63 @@ export class HomePage implements OnInit {
     this.disconnectSubscription.unsubscribe();
     this.connectSubscription.unsubscribe();
   }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      this.storage.get('datos').then(async (val)=>{
+        this.serviceChofer.getById(val[2]).subscribe(async user =>{
+          const choferObj= Object(user);
+          this.usuario = choferObj['nombre'];
+        })
+      });
+      event.target.complete();
+    }, 200);
+  }
+ 
   
+  
+
+  conexion(){
+    this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+      this.presentAlertDisconnect();
+    });
+    // stop disconnect watch
+    //disconnectSubscription.unsubscribe();
+    // watch network for a connection
+    this.connectSubscription = this.network.onConnect().subscribe(() => {
+      this.presentAlertConnect();
+    });
+    // stop connect watch
+    //connectSubscription.unsubscribe();
+  }
+
+  
+  async presentAlertConnect() {
+    const alert = await this.alertController.create({
+      cssClass: 'animate__bounceInLeft',
+      header: 'Red',
+      message: 'Se reanudó la conexión a Internet',
+      animated: true,
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
+    const { role } = await alert.onDidDismiss();
+  }
+
+  async presentAlertDisconnect() {
+    const alert = await this.alertController.create({
+      cssClass: 'animate__bounceInLeft',
+      header: 'Red',
+      message: 'Se interrumpió la conexión a Internet',
+      animated: true,
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+  }
 }

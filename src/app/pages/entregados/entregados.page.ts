@@ -22,6 +22,17 @@ export class EntregadosPage implements OnInit {
     });
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      this.service.getAll().subscribe(response=>{
+        this.entregado = response;
+      });
+      event.target.complete();
+    }, 200);
+  }
+
   vercodeQR(auto){
     
   }
@@ -82,4 +93,5 @@ export class EntregadosPage implements OnInit {
     await aler.present();
   }
 
+  
 }
